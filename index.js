@@ -133,7 +133,7 @@ class Game {
         this.entities.push({
           x: entity.x,
           y: entity.y + (entity.height / 2),
-          color: 'yellow',
+          color: 'purple',
           dx: lerpDx,
           dy: lerpDy,
           speed: 5,
