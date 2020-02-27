@@ -1,4 +1,4 @@
-const newEntity = () => {
+function newEntity() {
   return {
     type: 'enemy',
     x: 0,
@@ -11,14 +11,14 @@ const newEntity = () => {
   };
 }
 
-const newPlayer = () => {
+function newPlayer() {
   const player = newEntity();
   player.type = 'player';
   player.color = 'blue';
   return player;
 }
 
-const randomEnemy = () => {
+function randomEnemy() {
   const enemy = newEntity();
   enemy.type = 'enemy';
   enemy.color = 'red';
@@ -27,19 +27,19 @@ const randomEnemy = () => {
   return enemy;
 }
 
-const closeTo = (e1, e2) => {
+function closeTo(e1, e2) {
   const xDistance = Math.abs(e1.x - e2.x);
   const yDistance = Math.abs(e1.y - e2.y);
   return (xDistance <= 10 && yDistance <= 10);
 }
 
-const collide = (e1, e2) => {
+function collide(e1, e2) {
   const insideX = (e1.x + e1.width >= e2.x) && (e1.x <= e2.x + e2.width);
   const insideY = (e1.y + e1.height >= e2.y) && (e1.y <= e2.y + e2.height);
   return (insideX && insideY);
 }
 
-const quadrant = (e1, e2) => {
+function quadrant(e1, e2) {
   const leftOf = e1.x < e2.x;
   const rightOf = e1.x > e2.x;
   const above = e1.y < e2.y;
@@ -55,7 +55,7 @@ const quadrant = (e1, e2) => {
   }
 }
 
-const lerp = (e1, e2) => {
+function lerp(e1, e2) {
   const quad = quadrant(e1, e2);
   if (quad === 1) {
     const adjacent = e2.x - e1.x;
@@ -116,7 +116,7 @@ class Game {
     })
   }
 
-  run = () => {
+  run() {
       this.context.fillStyle = 'lightgrey';
       this.context.fillRect(0, 0, this.screenWidth, this.screenHeight);
       this.context.moveTo(0, 0);
